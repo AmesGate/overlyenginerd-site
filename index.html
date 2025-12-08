@@ -90,7 +90,7 @@
     .brand-logo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;   /* crops to round container */
+      object-fit: cover;   /* crops logo nicely in the circle */
       display: block;
     }
 
@@ -559,8 +559,14 @@
         Tell me what you’ve got, what it’s doing, and how I can reach you. After you send this in,
         you can text photos so I can see exactly what you’re working with.
       </p>
-      <!-- Hook this up to your preferred form handler later -->
-      <form action="#" method="post">
+
+      <!-- FormSubmit integration -->
+      <form action="https://formsubmit.co/support@amesgate.com" method="POST">
+        <!-- FormSubmit options -->
+        <input type="hidden" name="_subject" value="New Overly Enginerd repair request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
         <label for="name">Your name</label>
         <input id="name" name="name" type="text" placeholder="Name" required>
 
