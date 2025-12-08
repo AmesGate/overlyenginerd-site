@@ -88,9 +88,9 @@
     }
 
     .brand-logo img {
-      width: 82%;
-      height: 82%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;       /* crops the image to the round container */
       display: block;
     }
 
@@ -195,6 +195,7 @@
     .hero-footnote {
       font-size: 0.8rem;
       color: var(--text-muted);
+      margin-top: 4px;
     }
 
     .panel {
@@ -300,13 +301,6 @@
       white-space: nowrap;
     }
 
-    .bottom-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.1fr);
-      gap: 18px;
-      font-size: 0.84rem;
-    }
-
     .recent-list {
       margin-top: 4px;
       list-style: none;
@@ -320,40 +314,6 @@
     .recent-list strong {
       color: #fff;
       font-weight: 500;
-    }
-
-    .contact-box {
-      background: radial-gradient(circle at 0 0, rgba(215,180,103,0.2) 0, rgba(7,8,12,0.98) 55%);
-      border-radius: var(--radius);
-      border: 1px solid rgba(215,180,103,0.7);
-      padding: 12px 13px 13px;
-    }
-
-    .contact-box h3 {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .contact-box p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 0.82rem;
-    }
-
-    .contact-actions a {
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.9);
-      background: #000;
-      color: #fff;
     }
 
     .form-panel {
@@ -433,8 +393,7 @@
       .hero {
         grid-template-columns: minmax(0,1fr);
       }
-      .grid-two,
-      .bottom-grid {
+      .grid-two {
         grid-template-columns: minmax(0,1fr);
       }
     }
@@ -477,8 +436,11 @@
         </div>
 
         <p class="hero-footnote">
-          Clocks, retro gear, small electronics, routers, odd mechanical problems, brackets and mounts, custom bits and pieces.
-          If you’re not sure who to call, I’m probably the person.
+          I’ve always been the person who wants to know how something works and what went wrong when it stops.
+          As a kid it was radios, game systems, and anything with a motor. These days it’s clocks, retro tech,
+          home gear, and the odd little devices people care about too much to throw away. I like saving good
+          hardware from the trash, solving problems that don’t have an obvious manual, and giving you back
+          something that feels reliable again.
         </p>
       </div>
 
@@ -551,51 +513,42 @@
       </article>
     </section>
 
-    <section class="bottom-grid">
-      <article class="panel">
-        <h2>Recent saves</h2>
-        <ul class="recent-list">
-          <li><strong>VHS extraction:</strong> Carefully removed a stuck tape from a VCR without harming the recording.</li>
-          <li><strong>Pendulum clock refresh:</strong> Brought a moody wall clock back on time after years on a shelf.</li>
-          <li><strong>Home network clean-up:</strong> Re-organized a tangle of routers and cables so streaming and work calls stopped dropping.</li>
-          <li><strong>Custom hardware bracket:</strong> Built a small mount so a piece of equipment could finally live where it belonged.</li>
-          <li><strong>Game console revive:</strong> Nursed an older console back to life so a family could keep using their original saves.</li>
-          <li><strong>Desk lamp rescue:</strong> Rewired a favorite lamp with a damaged cord so it was safe to use again.</li>
-          <li><strong>Audio setup tune-up:</strong> Tracked down a stubborn hum in a small home stereo system and quieted it.</li>
-          <li><strong>Timer mechanism repair:</strong> Restored a mechanical timer that had stopped advancing partway through its cycle.</li>
-          <li><strong>Charging port fix:</strong> Stabilized a loose port on a frequently used device to save it from being replaced.</li>
-          <li><strong>Workshop fan repair:</strong> Cleaned and repaired a noisy shop fan that had become almost unusable.</li>
-          <li><strong>Legacy camera helper:</strong> Got an older digital camera talking to a modern computer so photos could be backed up.</li>
-          <li><strong>Cable management pass:</strong> Tamed a pile of loose cords behind a desk so nothing was getting yanked or unplugged by accident.</li>
-          <li><strong>Battery contact cleanup:</strong> Revived a sentimental battery-powered gadget by cleaning and repairing corroded contacts.</li>
-        </ul>
-      </article>
+    <!-- Service area full width -->
+    <section class="panel" style="margin-top:18px;">
+      <h2>Service area</h2>
+      <p>
+        I mainly work along the <strong>285 corridor</strong>:
+        Pine, Bailey, Conifer, and Evergreen. For smaller items we can do drop-off,
+        quick meet-up, or case-by-case house calls. If you’re nearby but not on that stretch,
+        feel free to ask and I’ll let you know what’s reasonable.
+      </p>
+    </section>
 
-      <aside>
-        <article class="panel" style="margin-bottom:10px;">
-          <h2>Service area</h2>
-          <p>
-            I mainly work along the <strong>285 corridor</strong>:
-            Pine, Bailey, Conifer, and Evergreen. For smaller items we can do drop-off,
-            quick meet-up, or case-by-case house calls.
-          </p>
-        </article>
-
-        <div class="contact-box">
-          <h3>Ask “can you fix this?”</h3>
-          <p>Use the form below to tell me what’s going on and where I can text you for photos and updates.</p>
-          <div class="contact-actions">
-            <a href="#book-a-fix">📋 Open request form</a>
-          </div>
-        </div>
-      </aside>
+    <!-- Recent saves full width -->
+    <section class="panel" style="margin-top:14px;">
+      <h2>Recent saves</h2>
+      <ul class="recent-list">
+        <li><strong>VHS extraction:</strong> Carefully removed a stuck tape from a VCR without harming the recording.</li>
+        <li><strong>Pendulum clock refresh:</strong> Brought a moody wall clock back on time after years on a shelf.</li>
+        <li><strong>Home network clean-up:</strong> Re-organized a tangle of routers and cables so streaming and work calls stopped dropping.</li>
+        <li><strong>Custom hardware bracket:</strong> Built a small mount so a piece of equipment could finally live where it belonged.</li>
+        <li><strong>Game console revive:</strong> Nursed an older console back to life so a family could keep using their original saves.</li>
+        <li><strong>Desk lamp rescue:</strong> Rewired a favorite lamp with a damaged cord so it was safe to use again.</li>
+        <li><strong>Audio setup tune-up:</strong> Tracked down a stubborn hum in a small home stereo system and quieted it.</li>
+        <li><strong>Timer mechanism repair:</strong> Restored a mechanical timer that had stopped advancing partway through its cycle.</li>
+        <li><strong>Charging port fix:</strong> Stabilized a loose port on a frequently used device to save it from being replaced.</li>
+        <li><strong>Workshop fan repair:</strong> Cleaned and repaired a noisy shop fan that had become almost unusable.</li>
+        <li><strong>Legacy camera helper:</strong> Got an older digital camera talking to a modern computer so photos could be backed up.</li>
+        <li><strong>Cable management pass:</strong> Tamed a pile of loose cords behind a desk so nothing was getting yanked or unplugged by accident.</li>
+        <li><strong>Battery contact cleanup:</strong> Revived a sentimental battery-powered gadget by cleaning and repairing corroded contacts.</li>
+      </ul>
     </section>
 
     <section id="book-a-fix" class="form-panel">
       <h2 style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.9rem;margin-bottom:6px;">Book a fix</h2>
       <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:6px;">
-        Tell me what you’ve got, what it’s doing, and where I can text you. After you submit this,
-        I’ll reply with next steps and when to send photos.
+        Tell me what you’ve got, what it’s doing, and how I can reach you. After you send this in,
+        you can text photos so I can see exactly what you’re working with.
       </p>
       <!-- Hook this up to your preferred form handler later -->
       <form action="#" method="post">
@@ -608,14 +561,18 @@
         <label for="issue">What’s going wrong?</label>
         <textarea id="issue" name="issue" placeholder="Describe the problem, any sounds, when it started…" required></textarea>
 
-        <label for="sms">Mobile number to text for photos and updates</label>
-        <input id="sms" name="sms" type="tel" placeholder="e.g., 555-123-4567" required>
+        <label for="contact">How should I contact you back?</label>
+        <input id="contact" name="contact" type="text" placeholder="Email or mobile number" required>
 
-        <label for="email">Email (optional)</label>
-        <input id="email" name="email" type="email" placeholder="you@example.com">
+        <label for="photoCode">Photo code for pictures</label>
+        <input id="photoCode" name="photoCode" type="text" readonly placeholder="Click to generate a code">
+        <small>
+          When you text pictures of the item to <strong>720-691-5013</strong>, please include this code in your message
+          so I can match the photos to your request.
+        </small>
 
         <button type="submit">Send request</button>
-        <small>You can also text photos directly after we connect so I can see what you’re working with.</small>
+        <small>You can text photos after sending this form so I can see details, labels, and any damage up close.</small>
       </form>
     </section>
 
@@ -626,7 +583,22 @@
   </main>
 
   <script>
+    // year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // photo code generator: random 6-digit code, new on load and when field is focused
+    function generatePhotoCode() {
+      var code = Math.floor(100000 + Math.random() * 900000);
+      var field = document.getElementById("photoCode");
+      if (field) field.value = code;
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      var field = document.getElementById("photoCode");
+      if (!field) return;
+      generatePhotoCode();
+      field.addEventListener("focus", generatePhotoCode);
+    });
   </script>
 </body>
 </html>
