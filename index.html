@@ -1,656 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Overly Enginerd • If it exists, I can probably fix it.</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Overly Enginerd: mountain-town engineer in Pine, Colorado. I fix and build all kinds of odd gear, electronics, and home tech." />
+  <title>Overly Enginerd | Fix-it service in the Colorado foothills</title>
+  <meta name="description" content="Small mechanical repairs, clocks, holiday pieces, electronics troubleshooting, and weird little fixes. Serving Pine, Conifer, Bailey, Evergreen." />
+
+  <meta property="og:title" content="Overly Enginerd" />
+  <meta property="og:description" content="Fix-it service in the Colorado foothills. Clocks, small motors, holiday pieces, electronics troubleshooting, and odd jobs done right." />
+  <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --bg: #05060a;
-      --panel: #10131b;
-      --panel-soft: #171b25;
-      --accent: #d7b467;      /* brass */
-      --accent-soft: rgba(215, 180, 103, 0.16);
-      --pine: #163428;
-      --text-main: #f5f5ff;
-      --text-muted: #a2a8ba;
+    :root{
+      --bg0:#0b0f14;
+      --bg1:#0f1620;
+      --card:#111a26;
+      --card2:#0e1520;
+      --line:#1b2a3d;
+      --text:#eaf1ff;
+      --muted:#a9b7cc;
+      --muted2:#7f90a8;
+      --accent:#d9b06c; /* warm brass */
+      --good:#78e3b2;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
       --radius: 18px;
-      --shadow-soft: 0 18px 42px rgba(0,0,0,0.75);
-      --border-subtle: 1px solid rgba(255,255,255,0.06);
-      --max-width: 1040px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, #191f32 0, #05060a 58%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 32px 16px 64px;
-      color: var(--text-main);
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(900px 600px at 20% 10%, #172338 0%, rgba(23,35,56,0) 60%),
+                  radial-gradient(700px 500px at 90% 20%, #1f2f2a 0%, rgba(31,47,42,0) 60%),
+                  linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+      min-height:100vh;
     }
 
-    main {
-      width: 100%;
-      max-width: var(--max-width);
-      background:
-        radial-gradient(circle at top left, #262a3c 0, #080a10 60%);
-      border-radius: 26px;
-      border: var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      padding: 22px 20px 30px;
-      position: relative;
-      overflow: hidden;
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 42px}
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0 22px;
     }
 
-    main::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at -10% -20%, rgba(215,180,103,0.14) 0, transparent 55%),
-        radial-gradient(circle at 120% -10%, rgba(127,215,255,0.16) 0, transparent 55%);
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: -1;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:42px; height:42px;
+      border-radius:12px;
+      background: linear-gradient(145deg, rgba(217,176,108,.25), rgba(217,176,108,.06));
+      border:1px solid rgba(217,176,108,.25);
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow);
+      flex:0 0 auto;
+    }
+    .logo span{
+      font-weight:800;
+      letter-spacing:.06em;
+      color:var(--accent);
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 26px;
+    .brandText{
+      line-height:1.05;
+    }
+    .brandText .name{
+      font-weight:800;
+      letter-spacing:.02em;
+      font-size:18px;
+      text-indent: 6px; /* your “indent brand name slightly” preference */
+    }
+    .brandText .tag{
+      margin-top:4px;
+      color:var(--muted2);
+      font-size:13px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .brand-logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #33363f 0, #05060a 70%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(215,180,103,0.5);
-      box-shadow: 0 0 24px rgba(0,0,0,0.9);
-      overflow: hidden;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(17,26,38,.35);
+      color:var(--muted);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+      white-space:nowrap;
     }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(217,176,108,.35);
+      background: rgba(17,26,38,.55);
+      color: var(--text);
     }
+    .pill strong{color:var(--text); font-weight:700}
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .brand-name {
-      font-weight: 650;
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    .brand-name::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 96px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), #7fd7ff);
-      opacity: 0.95;
-    }
-
-    .brand-tagline {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .header-meta {
-      text-align: right;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: flex-end;
-    }
-
-    .header-meta span {
-      max-width: 260px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.2fr);
-      gap: 20px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.6rem, 2.2vw, 1.9rem);
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-
-    .hero-sub {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .hero-sub strong { color: #fff; }
-
-    .hero-taglines {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .hero-taglines span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.45);
-      border: 1px solid rgba(215,180,103,0.35);
-    }
-
-    .hero-footnote {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .panel {
-      background: linear-gradient(145deg, rgba(19,23,33,0.96), rgba(10,12,18,0.98));
+    .hero{
       border-radius: var(--radius);
-      border: var(--border-subtle);
-      padding: 14px 14px 16px;
-      position: relative;
-      font-size: 0.86rem;
+      border:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(17,26,38,.70) 0%, rgba(14,21,32,.65) 100%);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      overflow:hidden;
+      position:relative;
     }
 
-    .panel h2 {
-      font-size: 0.94rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 9px;
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns: 1fr}
     }
 
-    .panel h2 span {
-      opacity: 0.75;
-      font-size: 0.76rem;
-      margin-left: 6px;
-      text-transform: none;
-      letter-spacing: 0;
+    .kicker{
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin:0 0 10px;
     }
 
-    .services-grid {
-      display: grid;
-      gap: 8px;
+    h1{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.06;
+      letter-spacing:-.02em;
+    }
+    @media (max-width: 520px){
+      h1{font-size:28px}
     }
 
-    .service-item {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      padding: 7px 8px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.03);
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.5;
+      max-width: 60ch;
     }
 
-    .service-icon {
-      font-size: 0.95rem;
-      margin-top: 1px;
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
-    .service-body strong {
-      font-weight: 550;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      font-weight:700;
+      min-width: 170px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(217,176,108,.35);
+      background: rgba(255,255,255,.06);
+    }
+    .btnPrimary{
+      border-color: rgba(217,176,108,.40);
+      background: linear-gradient(180deg, rgba(217,176,108,.22), rgba(217,176,108,.10));
+    }
+    .btnPrimary:hover{
+      border-color: rgba(217,176,108,.60);
+      background: linear-gradient(180deg, rgba(217,176,108,.28), rgba(217,176,108,.12));
     }
 
-    .service-body p {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-top: 2px;
+    .heroAside{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      padding:16px;
     }
 
-    .grid-two {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.5fr);
-      gap: 18px;
-      margin-bottom: 18px;
+    .miniTitle{
+      font-weight:800;
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.02em;
+    }
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.35;
+    }
+    .dot{
+      width:9px; height:9px;
+      border-radius:50%;
+      margin-top:4px;
+      background: rgba(120,227,178,.85);
+      box-shadow: 0 0 0 4px rgba(120,227,178,.12);
+      flex:0 0 auto;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 6px;
+    .section{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
     }
 
-    .step {
-      padding: 7px 8px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.04);
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .grid3{grid-template-columns: 1fr}
     }
 
-    .step span {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .pill {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(0,0,0,0.5);
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      white-space: nowrap;
-    }
-
-    .recent-list {
-      margin-top: 4px;
-      list-style: none;
-      color: var(--text-muted);
-    }
-
-    .recent-list li {
-      padding: 3px 0;
-    }
-
-    .recent-list strong {
-      color: #fff;
-      font-weight: 500;
-    }
-
-    .panel.centered {
-      text-align: center;
-    }
-
-    .panel.centered p,
-    .panel.centered ul {
-      max-width: 880px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .form-panel {
-      margin-top: 16px;
-      background: linear-gradient(145deg, rgba(18,22,32,0.98), rgba(9,11,17,0.98));
+    /* Entire-card clickable pattern */
+    .cardLink{
+      display:block;
       border-radius: var(--radius);
-      border: 1px solid rgba(215,180,103,0.4);
-      padding: 14px 14px 16px;
-      font-size: 0.84rem;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(17,26,38,.45);
+      box-shadow: 0 8px 22px rgba(0,0,0,.35);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      overflow:hidden;
+      position:relative;
+    }
+    .cardLink:hover{
+      transform: translateY(-2px);
+      border-color: rgba(217,176,108,.30);
+      background: rgba(17,26,38,.60);
+    }
+    .cardBody{padding:16px}
+
+    .cardHead{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
     }
 
-    form label {
-      display: block;
-      font-size: 0.8rem;
-      margin-top: 8px;
-      margin-bottom: 3px;
+    /* “bold white card headers link” */
+    .cardTitle{
+      font-weight:900;
+      letter-spacing:.01em;
+      margin:0;
+      font-size:16px;
+      color: var(--text);
+      text-indent: 6px; /* indent brand name slightly */
+    }
+    .cardTag{
+      font-size:12px;
+      color: var(--muted2);
+      border:1px solid rgba(255,255,255,.08);
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.16);
+      white-space:nowrap;
     }
 
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 7px 9px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.55);
-      color: #fff;
-      font-size: 0.82rem;
+    .cardText{
+      margin:0;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.45;
     }
 
-    form textarea {
-      min-height: 90px;
-      resize: vertical;
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .twoCol{grid-template-columns: 1fr}
     }
 
-    form button {
-      margin-top: 10px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(215,180,103,0.7);
-      background: radial-gradient(circle at 0 0, rgba(215,180,103,0.3) 0, #050608 55%);
-      color: #fff;
-      font-size: 0.82rem;
-      cursor: pointer;
+    .recent{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(17,26,38,.35);
+      padding:16px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.30);
+    }
+    .recent h2{
+      margin:0 0 12px;
+      font-size:16px;
+      font-weight:900;
+      text-indent: 6px;
+    }
+    .saveList{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .saveList li{
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.4;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.14);
+    }
+    .saveList strong{color:var(--text)}
+
+    footer{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    form small {
-      display: block;
-      margin-top: 4px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
+    .smallLinks{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
     }
-
-    .photo-note {
-      margin-top: 8px;
-      text-align: center;
-      font-size: 0.95rem;
-      color: var(--text-muted);
+    .smallLinks a{
+      color: var(--muted);
+      border-bottom:1px dashed rgba(255,255,255,.18);
     }
-
-    .photo-note strong {
-      color: #fff;
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    footer span strong {
-      color: #e6e6f0;
-      font-weight: 500;
-    }
-
-    @media (max-width: 840px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-meta {
-        align-items: flex-start;
-        text-align: left;
-      }
-      .hero {
-        grid-template-columns: minmax(0,1fr);
-      }
-      .grid-two {
-        grid-template-columns: minmax(0,1fr);
-      }
-      .panel.centered p,
-      .panel.centered ul {
-        text-align: left;
-      }
+    .smallLinks a:hover{
+      color: var(--text);
+      border-bottom-color: rgba(217,176,108,.55);
     }
   </style>
 </head>
+
 <body>
-  <main>
+  <div class="wrap">
     <header>
       <div class="brand">
-        <div class="brand-logo">
-          <img src="images/oe-logo.png" alt="Overly Enginerd logo">
-        </div>
-        <div class="brand-text">
-          <div class="brand-name">OVERLY ENGINERD</div>
-          <div class="brand-tagline">Mountain-town engineer. Fixes things. Builds things.</div>
+        <div class="logo" aria-hidden="true"><span>OE</span></div>
+        <div class="brandText">
+          <div class="name">Overly Enginerd</div>
+          <div class="tag">Fix-it service • Colorado foothills</div>
         </div>
       </div>
 
-      <div class="header-meta">
-        <span>Based in Pine, Colorado • Serving the 285 corridor (Pine, Bailey, Conifer, Evergreen)</span>
-      </div>
+      <nav>
+        <a class="pill" href="./index.html"><strong>Home</strong></a>
+        <a class="pill" href="./contact.html">Book / Contact</a>
+        <a class="pill" href="tel:7206915013">Call: <strong>720-691-5013</strong></a>
+      </nav>
     </header>
 
     <section class="hero">
-      <div>
-        <h1>If it exists, I can probably fix it.</h1>
-        <p class="hero-sub">
-          And if it doesn’t exist, <strong>I can probably make it.</strong>
-          I repair unusual broken things, build one-off solutions, and bring sentimental gear back from the edge. Hardware, mechanisms, physical weirdness, small moving things, old technology, and mysterious objects that need someone fearless to open them.
-        </p>
+      <div class="heroGrid">
+        <div>
+          <p class="kicker">Small repairs. Weird problems. Real fixes.</p>
+          <h1>Clocks, little motors, holiday pieces, electronics troubleshooting — and the odd job nobody wants.</h1>
+          <p class="sub">
+            If it’s small, mechanical, or just “acting possessed,” I can usually diagnose it fast and tell you the truth.
+            Serving Pine / Conifer / Bailey / Evergreen and nearby foothills.
+          </p>
 
-        <div class="hero-taglines">
-          <span>🛠️ If it has gears, wires, or buttons, I’ll at least take a serious look.</span>
-          <span>✨ Honest expectations, clear communication, and careful work.</span>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="tel:7206915013">Call / Text 720-691-5013</a>
+            <a class="btn" href="./contact.html">Book / Contact</a>
+          </div>
         </div>
 
-        <p class="hero-footnote">
-          I’ve always been the person who wants to know how something works and what went wrong when it stops.
-          As a kid it was radios, game systems, and anything with a motor. These days it’s clocks, retro tech,
-          home gear, and the odd little devices people care about too much to throw away. I like saving good
-          hardware from the trash, solving problems that don’t have an obvious manual, and giving you back
-          something that feels reliable again.
-        </p>
+        <aside class="heroAside">
+          <p class="miniTitle">How this works</p>
+          <ul class="list">
+            <li class="li"><span class="dot"></span><span><strong>Quick triage:</strong> you tell me what it’s doing, I tell you what’s likely happening.</span></li>
+            <li class="li"><span class="dot"></span><span><strong>Up-front plan:</strong> repair vs replace, what it costs, and what’s not worth chasing.</span></li>
+            <li class="li"><span class="dot"></span><span><strong>Clean finish:</strong> it works, it’s stable, and you’re not guessing.</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section twoCol">
+      <div class="grid3">
+        <!-- Fully clickable card. Title is also effectively the link because the whole card is the link. -->
+        <a class="cardLink" href="./services.html" aria-label="View services">
+          <div class="cardBody">
+            <div class="cardHead">
+              <h3 class="cardTitle">Services</h3>
+              <span class="cardTag">What I fix</span>
+            </div>
+            <p class="cardText">
+              Clocks, small motors, seasonal animatronics, electronics troubleshooting, home tech clean-ups, and “mystery failures.”
+            </p>
+          </div>
+        </a>
+
+        <a class="cardLink" href="./pricing.html" aria-label="View pricing">
+          <div class="cardBody">
+            <div class="cardHead">
+              <h3 class="cardTitle">Pricing</h3>
+              <span class="cardTag">No games</span>
+            </div>
+            <p class="cardText">
+              Simple rates, clear scope, and you’ll know before I go deep. If it’s not worth it, I’ll say so.
+            </p>
+          </div>
+        </a>
+
+        <a class="cardLink" href="./contact.html" aria-label="Book or contact">
+          <div class="cardBody">
+            <div class="cardHead">
+              <h3 class="cardTitle">Book a Fix</h3>
+              <span class="cardTag">Fastest</span>
+            </div>
+            <p class="cardText">
+              Tell me what’s broken, where you are, and the best time window. If it’s urgent, call/text.
+            </p>
+          </div>
+        </a>
       </div>
 
-      <aside class="panel">
-        <h2>What I do <span>(four big buckets)</span></h2>
-        <div class="services-grid">
-          <div class="service-item">
-            <div class="service-icon">🧰</div>
-            <div class="service-body">
-              <strong>Repair & restoration</strong>
-              <p>Bringing damaged or aging equipment, gadgets, and mechanisms back into reliable working shape.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="service-icon">⚙️</div>
-            <div class="service-body">
-              <strong>Custom builds & modifications</strong>
-              <p>Designing and fabricating one-off solutions when the part, bracket, or widget you need doesn’t exist.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="service-icon">📶</div>
-            <div class="service-body">
-              <strong>Home tech triage</strong>
-              <p>Sorting out confusing technology problems so your everyday devices and connections behave again.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="service-icon">🧩</div>
-            <div class="service-body">
-              <strong>Odd problems & one-offs</strong>
-              <p>Overly Enginerd is the tinkerer, the hardware whisperer, the mechanical chaos surgeon.</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="grid-two">
-      <article class="panel">
-        <h2>How it works</h2>
-        <div class="steps">
-          <div class="step">
-            <span>01 • Reach out</span>
-            <p>Send a quick message with a couple of photos, what it is, and what it’s doing (or not doing).</p>
-          </div>
-          <div class="step">
-            <span>02 • Quick look</span>
-            <p>I’ll tell you if it’s likely fixable, what it should roughly cost, and whether it’s worth the effort.</p>
-          </div>
-          <div class="step">
-            <span>03 • Repair / build</span>
-            <p>If you’re in, I do the work and keep you in the loop. No surprise add-ons or mystery decisions.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel">
-        <h2>Why people call me</h2>
-        <p style="color:var(--text-muted); margin-bottom:6px;">
-          I’m not a big shop. It’s just me, a workbench, too many tools, and a brain that refuses to let a good problem go unsolved.
-        </p>
-        <div class="pill-row">
-          <div class="pill">Local to Pine / 285 corridor</div>
-          <div class="pill">One repair at a time</div>
-          <div class="pill">Explains things in normal words</div>
-          <div class="pill">Respects sentimental items</div>
-          <div class="pill">Tells you honestly if it isn’t worth fixing</div>
-        </div>
-      </article>
-    </section>
-
-    <section class="panel centered" style="margin-top:18px;">
-      <h2>Service area</h2>
-      <p>
-        I mainly work along the <strong>285 corridor</strong>:
-        Pine, Bailey, Conifer, and Evergreen. For smaller items we can do drop-off,
-        quick meet-up, or case-by-case house calls. If you’re nearby but not on that stretch,
-        feel free to ask and I’ll let you know what’s reasonable.
-      </p>
-      <p style="margin-top:10px;">
-        <strong>Not local?</strong> No problem at all — I can diagnose most issues over phone, text,
-        or video. I can also help you source the right parts and walk you through the repair
-        step-by-step so you can do it yourself.
-      </p>
-    </section>
-
-    <section class="panel centered" style="margin-top:14px;">
-      <h2>Recent saves</h2>
-      <ul class="recent-list">
-        <li><strong>Santa restoration:</strong> Restored a BECO Santa from 1964 to working condition. A vintage, cherished heirloom.</li>
-        <li><strong>VHS extraction:</strong> Carefully removed a stuck tape from a VCR without harming the recording.</li>
-        <li><strong>Pendulum clock refresh:</strong> Brought a moody wall clock back on time after years on a shelf.</li>
-        <li><strong>Home network clean-up:</strong> Re-organized a tangle of routers and cables so streaming and work calls stopped dropping.</li>
-        <li><strong>Custom hardware bracket:</strong> Built a small mount so a piece of equipment could finally live where it belonged.</li>
-        <li><strong>Game console revive:</strong> Nursed an older console back to life so a family could keep using their original saves.</li>
-        <li><strong>Desk lamp rescue:</strong> Rewired a favorite lamp with a damaged cord so it was safe to use again.</li>
-        <li><strong>Audio setup tune-up:</strong> Tracked down a stubborn hum in a small home stereo system and quieted it.</li>
-        <li><strong>Timer mechanism repair:</strong> Restored a mechanical timer that had stopped advancing partway through its cycle.</li>
-        <li><strong>Charging port fix:</strong> Stabilized a loose port on a frequently used device to save it from being replaced.</li>
-        <li><strong>Workshop fan repair:</strong> Cleaned and repaired a noisy shop fan that had become almost unusable.</li>
-        <li><strong>Legacy camera helper:</strong> Got an older digital camera talking to a modern computer so photos could be backed up.</li>
-        <li><strong>Cable management pass:</strong> Tamed a pile of loose cords behind a desk so nothing was getting yanked or unplugged by accident.</li>
-        <li><strong>Battery contact cleanup:</strong> Revived a sentimental battery-powered gadget by cleaning and repairing corroded contacts.</li>
-      </ul>
-    </section>
-
-    <section id="book-a-fix" class="form-panel">
-      <h2 style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.9rem;margin-bottom:6px;">Book a fix</h2>
-      <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:6px;">
-        Tell me what you’ve got, what it’s doing, and how I can reach you. After you send this in,
-        you can text photos so I can see exactly what you’re working with.
-      </p>
-
-      <!-- FormSubmit: sends to support@amesgate.com using POST -->
-      <form action="https://formsubmit.co/support@amesgate.com" method="POST">
-        <input type="hidden" name="_subject" value="New Overly Enginerd repair request">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_url" value="https://www.overlyenginerd.com/">
-
-
-        <label for="name">Your name</label>
-        <input id="name" name="name" type="text" placeholder="Name" required>
-
-        <label for="item">What is it?</label>
-        <input id="item" name="item" type="text" placeholder="Clock, console, gadget, etc." required>
-
-        <label for="issue">What’s going wrong?</label>
-        <textarea id="issue" name="issue" placeholder="Describe the problem, any sounds, when it started…" required></textarea>
-
-        <label for="contact">How should I contact you back?</label>
-        <input id="contact" name="contact" type="text" placeholder="Email or mobile number" required>
-
-        <label for="photoCode">Photo code for pictures</label>
-        <input id="photoCode" name="photoCode" type="text" readonly placeholder="Code will generate automatically">
-
-        <small class="photo-note">
-          When you text pictures of the item to <strong>720-691-5013</strong>, please include this code in your message
-          so I can match the photos to your request.
-        </small>
-
-        <button type="submit">Send request</button>
-        <small>You can text photos after sending this form so I can see details, labels, and any damage up close.</small>
-      </form>
-      </section>
-      
-          <div style="
-        margin-top: 40px;
-        padding: 24px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 0 22px rgba(0,0,0,0.35);
-      ">
-      
-        <h2 style="color: #f1f1f1; margin-bottom: 10px; font-size: 1.4rem;">
-          Coming Soon: Overly EngiNerd Fabrication Lite™
-        </h2>
-      
-        <p style="color: #ccc; line-height: 1.6; margin-bottom: 18px;">
-          We’re expanding into custom fabrication with a full 3D printing and laser/CNC workstation.
-          This will let us make replacement parts, engrave tools, cut custom brackets, and handle jobs 
-          that no longer have parts available anywhere else.
-        </p>
-      
-        <ul style="color: #aaa; line-height: 1.6; margin-left: 16px; margin-bottom: 18px;">
-          <li>Precision 3D-printed replacement parts</li>
-          <li>Laser engraving on slate, wood, metal, glass... anything really</li>
-          <li>Custom brackets, mounts, and console pieces</li>
-          <li>Small-run fabrication for repairs and prototypes</li>
+      <div class="recent">
+        <h2>Recent saves</h2>
+        <ul class="saveList">
+          <li><strong>Santa restoration:</strong> Restored a 1964 BECO Santa back to working condition.</li>
+          <li><strong>VHS extraction:</strong> Pulled a stuck tape without harming the recording.</li>
+          <li><strong>Pendulum clock refresh:</strong> Restored the pendulum function on a custom-built clock.</li>
+          <li><strong>Music box repair:</strong> Fixed a vintage music box that would only play three sad notes before giving up.</li>
         </ul>
-      
-        <p style="color: #bbb;">
-          If you’ve got a project in mind already, feel free to send it over — early inquiries help us plan the workspace.
-        </p>
       </div>
+    </section>
+
+    <section class="section">
+      <a class="cardLink" href="./about.html" aria-label="About Overly Enginerd">
+        <div class="cardBody">
+          <div class="cardHead">
+            <h3 class="cardTitle">About</h3>
+            <span class="cardTag">Local</span>
+          </div>
+          <p class="cardText">
+            Built for foothill folks who want straight answers and reliable fixes. If it’s a “no,” you’ll get a clean reason — not a runaround.
+          </p>
+        </div>
+      </a>
+    </section>
 
     <footer>
-      <span>© <span id="year"></span> Overly Enginerd • Pine, Colorado</span>
-      <span><strong>Note:</strong> I don’t work on large appliances, vehicles, spouses, or taxes.</span>
+      <div>
+        © <span id="y"></span> Overly Enginerd • Foothills, Colorado
+      </div>
+      <div class="smallLinks">
+        <a href="tel:7206915013">720-691-5013</a>
+        <a href="./contact.html">Book / Contact</a>
+        <a href="./privacy.html">Privacy</a>
+      </div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    // year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // photo code generator: random 6-digit code, auto-fill on load and when field is focused
-    function generatePhotoCode() {
-      var code = Math.floor(100000 + Math.random() * 900000);
-      var field = document.getElementById("photoCode");
-      if (field) field.value = code;
-    }
-
-    window.addEventListener("DOMContentLoaded", function () {
-      var field = document.getElementById("photoCode");
-      if (!field) return;
-      generatePhotoCode();
-      field.addEventListener("focus", generatePhotoCode);
-    });
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
