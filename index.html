@@ -1,499 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Overly Enginerd | Fix-it service in the Colorado foothills</title>
-  <meta name="description" content="Small mechanical repairs, clocks, holiday pieces, electronics troubleshooting, and weird little fixes. Serving Pine, Conifer, Bailey, Evergreen." />
 
-  <meta property="og:title" content="Overly Enginerd" />
-  <meta property="og:description" content="Fix-it service in the Colorado foothills. Clocks, small motors, holiday pieces, electronics troubleshooting, and odd jobs done right." />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="Clocks, small motors, holiday pieces, electronics troubleshooting, and odd repairs. Serving Pine, Conifer, Bailey, and Evergreen." />
 
   <style>
-    :root{
-      --bg0:#0b0f14;
-      --bg1:#0f1620;
-      --card:#111a26;
-      --card2:#0e1520;
-      --line:#1b2a3d;
-      --text:#eaf1ff;
-      --muted:#a9b7cc;
-      --muted2:#7f90a8;
-      --accent:#d9b06c; /* warm brass */
-      --good:#78e3b2;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --radius: 18px;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: #0e1420;
+      color: #e8eef7;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(900px 600px at 20% 10%, #172338 0%, rgba(23,35,56,0) 60%),
-                  radial-gradient(700px 500px at 90% 20%, #1f2f2a 0%, rgba(31,47,42,0) 60%),
-                  linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
-      min-height:100vh;
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 42px}
-
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:10px 0 22px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .logo{
-      width:42px; height:42px;
-      border-radius:12px;
-      background: linear-gradient(145deg, rgba(217,176,108,.25), rgba(217,176,108,.06));
-      border:1px solid rgba(217,176,108,.25);
-      display:grid;
-      place-items:center;
-      box-shadow: var(--shadow);
-      flex:0 0 auto;
-    }
-    .logo span{
-      font-weight:800;
-      letter-spacing:.06em;
-      color:var(--accent);
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #1b2436;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #d6b46c;
     }
 
-    .brandText{
-      line-height:1.05;
-    }
-    .brandText .name{
-      font-weight:800;
-      letter-spacing:.02em;
-      font-size:18px;
-      text-indent: 6px; /* your “indent brand name slightly” preference */
-    }
-    .brandText .tag{
-      margin-top:4px;
-      color:var(--muted2);
-      font-size:13px;
+    nav a {
+      margin-left: 16px;
+      font-size: 14px;
+      color: #cfd8e6;
     }
 
-    nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(17,26,38,.35);
-      color:var(--muted);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(217,176,108,.35);
-      background: rgba(17,26,38,.55);
-      color: var(--text);
-    }
-    .pill strong{color:var(--text); font-weight:700}
-
-    .hero{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.08);
-      background: linear-gradient(180deg, rgba(17,26,38,.70) 0%, rgba(14,21,32,.65) 100%);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      overflow:hidden;
-      position:relative;
+    .hero {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
     }
 
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:start;
-    }
-    @media (max-width: 900px){
-      .heroGrid{grid-template-columns: 1fr}
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
     }
 
-    .kicker{
-      color:var(--muted);
-      font-size:13px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      margin:0 0 10px;
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:34px;
-      line-height:1.06;
-      letter-spacing:-.02em;
-    }
-    @media (max-width: 520px){
-      h1{font-size:28px}
+    p {
+      color: #b7c3d8;
+      line-height: 1.6;
+      font-size: 15px;
     }
 
-    .sub{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:15.5px;
-      line-height:1.5;
-      max-width: 60ch;
+    .cta {
+      margin-top: 18px;
     }
 
-    .ctaRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: 1px solid #2b3750;
+      background: #162034;
+      font-weight: 600;
+      font-size: 14px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      font-weight:700;
-      min-width: 170px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(217,176,108,.35);
-      background: rgba(255,255,255,.06);
-    }
-    .btnPrimary{
-      border-color: rgba(217,176,108,.40);
-      background: linear-gradient(180deg, rgba(217,176,108,.22), rgba(217,176,108,.10));
-    }
-    .btnPrimary:hover{
-      border-color: rgba(217,176,108,.60);
-      background: linear-gradient(180deg, rgba(217,176,108,.28), rgba(217,176,108,.12));
+    .btn.primary {
+      background: #d6b46c;
+      color: #0e1420;
+      border-color: #d6b46c;
     }
 
-    .heroAside{
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.18);
-      padding:16px;
+    .panel {
+      background: #141d2e;
+      border: 1px solid #26324a;
+      border-radius: 12px;
+      padding: 20px;
     }
 
-    .miniTitle{
-      font-weight:800;
-      margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:.02em;
-    }
-    .list{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.35;
-    }
-    .dot{
-      width:9px; height:9px;
-      border-radius:50%;
-      margin-top:4px;
-      background: rgba(120,227,178,.85);
-      box-shadow: 0 0 0 4px rgba(120,227,178,.12);
-      flex:0 0 auto;
+    .panel h3 {
+      margin-top: 0;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9fb0c9;
     }
 
-    .section{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
+    ul {
+      padding-left: 18px;
+      margin: 12px 0 0;
     }
 
-    .grid3{
-      display:grid;
+    li {
+      margin-bottom: 8px;
+      color: #cfd8e6;
+      font-size: 14px;
+    }
+
+    .sections {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 900px){
-      .grid3{grid-template-columns: 1fr}
+      gap: 20px;
     }
 
-    /* Entire-card clickable pattern */
-    .cardLink{
-      display:block;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(17,26,38,.45);
-      box-shadow: 0 8px 22px rgba(0,0,0,.35);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      overflow:hidden;
-      position:relative;
-    }
-    .cardLink:hover{
-      transform: translateY(-2px);
-      border-color: rgba(217,176,108,.30);
-      background: rgba(17,26,38,.60);
-    }
-    .cardBody{padding:16px}
-
-    .cardHead{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
+    @media (max-width: 900px) {
+      .sections { grid-template-columns: 1fr; }
     }
 
-    /* “bold white card headers link” */
-    .cardTitle{
-      font-weight:900;
-      letter-spacing:.01em;
-      margin:0;
-      font-size:16px;
-      color: var(--text);
-      text-indent: 6px; /* indent brand name slightly */
-    }
-    .cardTag{
-      font-size:12px;
-      color: var(--muted2);
-      border:1px solid rgba(255,255,255,.08);
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(0,0,0,.16);
-      white-space:nowrap;
-    }
-
-    .cardText{
-      margin:0;
-      color: var(--muted);
-      font-size:14px;
-      line-height:1.45;
-    }
-
-    .twoCol{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .twoCol{grid-template-columns: 1fr}
-    }
-
-    .recent{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(17,26,38,.35);
-      padding:16px;
-      box-shadow: 0 8px 22px rgba(0,0,0,.30);
-    }
-    .recent h2{
-      margin:0 0 12px;
-      font-size:16px;
-      font-weight:900;
-      text-indent: 6px;
-    }
-    .saveList{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .saveList li{
-      color: var(--muted);
-      font-size:14px;
-      line-height:1.4;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.06);
-      background: rgba(0,0,0,.14);
-    }
-    .saveList strong{color:var(--text)}
-
-    footer{
-      margin-top:22px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color: var(--muted2);
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .smallLinks{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .smallLinks a{
-      color: var(--muted);
-      border-bottom:1px dashed rgba(255,255,255,.18);
-    }
-    .smallLinks a:hover{
-      color: var(--text);
-      border-bottom-color: rgba(217,176,108,.55);
+    footer {
+      max-width: 1100px;
+      margin: 40px auto 20px;
+      padding: 0 20px;
+      font-size: 13px;
+      color: #8fa1bd;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"><span>OE</span></div>
-        <div class="brandText">
-          <div class="name">Overly Enginerd</div>
-          <div class="tag">Fix-it service • Colorado foothills</div>
-        </div>
-      </div>
 
-      <nav>
-        <a class="pill" href="./index.html"><strong>Home</strong></a>
-        <a class="pill" href="./contact.html">Book / Contact</a>
-        <a class="pill" href="tel:7206915013">Call: <strong>720-691-5013</strong></a>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <div class="heroGrid">
-        <div>
-          <p class="kicker">Small repairs. Weird problems. Real fixes.</p>
-          <h1>Clocks, little motors, holiday pieces, electronics troubleshooting — and the odd job nobody wants.</h1>
-          <p class="sub">
-            If it’s small, mechanical, or just “acting possessed,” I can usually diagnose it fast and tell you the truth.
-            Serving Pine / Conifer / Bailey / Evergreen and nearby foothills.
-          </p>
-
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="tel:7206915013">Call / Text 720-691-5013</a>
-            <a class="btn" href="./contact.html">Book / Contact</a>
-          </div>
-        </div>
-
-        <aside class="heroAside">
-          <p class="miniTitle">How this works</p>
-          <ul class="list">
-            <li class="li"><span class="dot"></span><span><strong>Quick triage:</strong> you tell me what it’s doing, I tell you what’s likely happening.</span></li>
-            <li class="li"><span class="dot"></span><span><strong>Up-front plan:</strong> repair vs replace, what it costs, and what’s not worth chasing.</span></li>
-            <li class="li"><span class="dot"></span><span><strong>Clean finish:</strong> it works, it’s stable, and you’re not guessing.</span></li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section twoCol">
-      <div class="grid3">
-        <!-- Fully clickable card. Title is also effectively the link because the whole card is the link. -->
-        <a class="cardLink" href="./services.html" aria-label="View services">
-          <div class="cardBody">
-            <div class="cardHead">
-              <h3 class="cardTitle">Services</h3>
-              <span class="cardTag">What I fix</span>
-            </div>
-            <p class="cardText">
-              Clocks, small motors, seasonal animatronics, electronics troubleshooting, home tech clean-ups, and “mystery failures.”
-            </p>
-          </div>
-        </a>
-
-        <a class="cardLink" href="./pricing.html" aria-label="View pricing">
-          <div class="cardBody">
-            <div class="cardHead">
-              <h3 class="cardTitle">Pricing</h3>
-              <span class="cardTag">No games</span>
-            </div>
-            <p class="cardText">
-              Simple rates, clear scope, and you’ll know before I go deep. If it’s not worth it, I’ll say so.
-            </p>
-          </div>
-        </a>
-
-        <a class="cardLink" href="./contact.html" aria-label="Book or contact">
-          <div class="cardBody">
-            <div class="cardHead">
-              <h3 class="cardTitle">Book a Fix</h3>
-              <span class="cardTag">Fastest</span>
-            </div>
-            <p class="cardText">
-              Tell me what’s broken, where you are, and the best time window. If it’s urgent, call/text.
-            </p>
-          </div>
-        </a>
-      </div>
-
-      <div class="recent">
-        <h2>Recent saves</h2>
-        <ul class="saveList">
-          <li><strong>Santa restoration:</strong> Restored a 1964 BECO Santa back to working condition.</li>
-          <li><strong>VHS extraction:</strong> Pulled a stuck tape without harming the recording.</li>
-          <li><strong>Pendulum clock refresh:</strong> Restored the pendulum function on a custom-built clock.</li>
-          <li><strong>Music box repair:</strong> Fixed a vintage music box that would only play three sad notes before giving up.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <a class="cardLink" href="./about.html" aria-label="About Overly Enginerd">
-        <div class="cardBody">
-          <div class="cardHead">
-            <h3 class="cardTitle">About</h3>
-            <span class="cardTag">Local</span>
-          </div>
-          <p class="cardText">
-            Built for foothill folks who want straight answers and reliable fixes. If it’s a “no,” you’ll get a clean reason — not a runaround.
-          </p>
-        </div>
-      </a>
-    </section>
-
-    <footer>
-      <div>
-        © <span id="y"></span> Overly Enginerd • Foothills, Colorado
-      </div>
-      <div class="smallLinks">
-        <a href="tel:7206915013">720-691-5013</a>
-        <a href="./contact.html">Book / Contact</a>
-        <a href="./privacy.html">Privacy</a>
-      </div>
-    </footer>
+<header>
+  <div class="brand">
+    <div class="logo">OE</div>
+    <div>
+      <strong>Overly Enginerd</strong><br />
+      <span style="font-size:13px; color:#9fb0c9;">Fix-it service • Colorado foothills</span>
+    </div>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./contact.html">Book / Contact</a>
+    <a href="tel:7206915013">Call: 720-691-5013</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Clocks, little motors, holiday pieces, electronics troubleshooting — and the odd job nobody wants.</h1>
+    <p>
+      If it’s small, mechanical, or just acting possessed, I can usually diagnose it quickly
+      and tell you the truth. Serving Pine, Conifer, Bailey, Evergreen, and nearby foothills.
+    </p>
+
+    <div class="cta">
+      <a class="btn primary" href="tel:7206915013">Call / Text 720-691-5013</a>
+      <a class="btn" href="./contact.html">Book / Contact</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>How this works</h3>
+    <ul>
+      <li><strong>Quick triage:</strong> what it’s doing vs. what’s likely wrong</li>
+      <li><strong>Up-front plan:</strong> repair, replace, or stop chasing it</li>
+      <li><strong>Clean finish:</strong> stable, usable, and explained</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sections">
+  <div class="panel">
+    <h3>Services</h3>
+    <p>Clocks, small motors, seasonal animatronics, electronics troubleshooting, home tech clean-ups, and mystery failures.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Pricing</h3>
+    <p>Simple rates, clear scope, and honest answers. If it’s not worth fixing, I’ll say so.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Recent saves</h3>
+    <ul>
+      <li>1964 BECO Santa restored</li>
+      <li>Stuck VHS tape extracted safely</li>
+      <li>Pendulum clock function restored</li>
+      <li>Vintage music box repaired</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Overly Enginerd • Foothills, Colorado</div>
+  <div>
+    <a href="tel:7206915013">720-691-5013</a> ·
+    <a href="./contact.html">Book / Contact</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
